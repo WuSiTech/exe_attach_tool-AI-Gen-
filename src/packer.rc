@@ -1,0 +1,49 @@
+/* ============================================================================
+ * packer.rc —— 打包器的资源
+ *
+ * 躯干模板不在这里：它由 build.ps1 追加到打包器文件尾部（原因见 packer.cpp）。
+ *
+ * 本资源文件只提供：
+ *   - 程序清单（asInvoker）
+ *   - 程序图标（icon.ico，路径相对本文件；build.ps1 会把仓库根目录的
+ *     icon.ico 复制到 src\ 下再调用 windres）
+ *   - 版本信息（软件属性里显示的 公司名/版权 等）
+ * ==========================================================================*/
+
+#include <windows.h>
+
+/* 1 = CREATEPROCESS_MANIFEST_RESOURCE_ID */
+1 RT_MANIFEST "packer.manifest"
+
+/* 主图标：ID 1 是 Windows 约定俗成的"应用程序图标" */
+1 ICON "icon.ico"
+
+/* 版本信息：这些值会出现在文件属性 -> 详细信息 里 */
+VS_VERSION_INFO VERSIONINFO
+  FILEVERSION    1,0,0,0
+  PRODUCTVERSION 1,0,0,0
+  FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
+  FILEFLAGS      0x0L
+  FILEOS         VOS_NT_WINDOWS32
+  FILETYPE       VFT_APP
+  FILESUBTYPE    VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName",      "WuSi"
+            VALUE "FileDescription",  "WuSi Attacher - A/B 单文件打包器"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "WuSi_Attacher"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 WuSi"
+            VALUE "OriginalFilename", "WuSi_Attacher.exe"
+            VALUE "ProductName",      "WuSi Attacher"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END

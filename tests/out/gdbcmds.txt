@@ -1,0 +1,12 @@
+set pagination off
+set confirm off
+run
+echo \n===== CRASH BACKTRACE =====\n
+bt 40
+echo \n===== REGISTERS =====\n
+info registers rip rsp rbp rax rbx rcx rdx rsi rdi
+info symbol \
+echo \n===== THREADS =====\n
+info threads
+thread apply all bt 12
+quit
